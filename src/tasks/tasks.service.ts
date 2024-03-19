@@ -51,14 +51,6 @@ export class TasksService {
     return task;
   }
 
-  // getTaskById(id: string): Task {
-  //   const found = this.tasks.find((task) => task.id === id);
-  //   if (!found) {
-  //     throw new NotFoundException(`Task ID '${id}' not found`);
-  //   }
-  //   return found;
-  // }
-
   async deleteTask(id: string): Promise<void> {
     const result = await this.tasksRepository.delete(id);
     if (result.affected === 0) {
@@ -66,9 +58,10 @@ export class TasksService {
     }
   }
 
-  // updateTaskStatus(id: string, status: TaskStatus) {
-  //   const task = this.getTaskById(id);
-  //   task.status = status;
-  //   return task;
-  // }
+  async updateTaskStatus(id: string, status: TaskStatus): Promise<Task> {
+    const task = await this.getTaskById(id);
+    task.status = status;
+    await this.tasksRepository.save(task);
+    return task;
+  }
 }
