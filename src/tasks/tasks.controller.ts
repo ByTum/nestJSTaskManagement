@@ -2,7 +2,7 @@ import { CreateTaskDto } from './dto/create-task.dto';
 import {
   Body,
   Controller,
-  // Delete,
+  Delete,
   Get,
   Param,
   // Patch,
@@ -33,10 +33,10 @@ export class TasksController {
     return this.tasksService.getTaskById(id);
   }
 
-  // @Delete('/:id')
-  // deleteTask(@Param('id') id: string): void {
-  //   return this.tasksService.deleteTask(id);
-  // }
+  @Delete('/:id')
+  deleteTask(@Param('id') id: string): Promise<void> {
+    return this.tasksService.deleteTask(id);
+  }
 
   @Post()
   createTask(
