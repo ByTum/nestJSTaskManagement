@@ -1,12 +1,12 @@
-// import { CreateTaskDto } from './dto/create-task.dto';
+import { CreateTaskDto } from './dto/create-task.dto';
 import {
-  // Body,
+  Body,
   Controller,
   // Delete,
   Get,
   Param,
   // Patch,
-  // Post,
+  Post,
   // Query,
 } from '@nestjs/common';
 import { TasksService } from './tasks.service';
@@ -38,13 +38,13 @@ export class TasksController {
   //   return this.tasksService.deleteTask(id);
   // }
 
-  // @Post()
-  // createTask(
-  //   @Body()
-  //   createTaskDto: CreateTaskDto,
-  // ): Task {
-  //   return this.tasksService.createTask(createTaskDto);
-  // }
+  @Post()
+  createTask(
+    @Body()
+    createTaskDto: CreateTaskDto,
+  ): Promise<Task> {
+    return this.tasksService.createTask(createTaskDto);
+  }
 
   // @Patch('/:id/status')
   // updateTaskStatus(
