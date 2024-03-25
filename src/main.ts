@@ -5,6 +5,8 @@ import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
 import { TransformInterceptor } from './transform.interceptor';
 import { Logger } from '@nestjs/common';
 
+// console.log(process.env);
+
 async function bootstrap() {
   const logger = new Logger();
 
