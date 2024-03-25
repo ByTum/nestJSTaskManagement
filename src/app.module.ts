@@ -15,7 +15,7 @@ import { AuthModule } from './auth/auth.module';
       database: 'task-management',
       autoLoadEntities: true,
       synchronize: true,
-      logging: true,
+      // logging: true,
     }),
   ],
 })
