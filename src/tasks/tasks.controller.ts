@@ -15,6 +15,8 @@ import { TasksService } from './tasks.service';
 import { GetTasksFilterDto } from './dto/get-tasks-filter.dto';
 import { UpdateTaskStatusDto } from './dto/update-task-status-dto';
 import { Task } from './task-entity';
+import { GetUser } from 'src/auth/get-user.decorators';
+import { User } from 'src/auth/user.entity';
 
 @Controller('tasks')
 @UseGuards(AuthGuard())
@@ -40,8 +42,9 @@ export class TasksController {
   createTask(
     @Body()
     createTaskDto: CreateTaskDto,
+    @GetUser() user: User,
   ): Promise<Task> {
-    return this.tasksService.createTask(createTaskDto);
+    return this.tasksService.createTask(createTaskDto, user);
   }
 
   @Patch('/:id/status')
